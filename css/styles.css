@@ -1,0 +1,1198 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;   
+}
+
+.sidebar ul li a.selected{
+    background-color: #ffffff;
+    color: #1c1b2c;
+
+}
+.sidebar.active ul li a.selected{
+    background-color: #ffffff;
+    color: #1c1b2c;
+
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70px;
+    background: #11101d;
+    padding: 15px 10px;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active{
+    width: 300px;
+}
+
+.sidebar .logo_content{
+    width: 100%;
+    height: 7%;
+    display: flex;
+    color: #fff;
+
+}
+.sidebar .logo_content .logo{
+    width: 80%;
+    display: flex;  
+    opacity: 0;
+    pointer-events: none; 
+    transition: all 0.5s ease;
+}
+
+.sidebar.active .logo_content .logo{
+    opacity: 1;
+    pointer-events: none;
+
+}
+.sidebar .logo_content .logo i{
+    width: 25%;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar .logo_content .logo .logo_name{
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    white-space: nowrap;
+}
+
+.sidebar .logo_content #btn{
+    position: absolute;
+    height: 7%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    transform: translate(-50%);
+}
+.sidebar.active #btn{
+    left: 90%;
+    
+}
+
+.sidebar ul li{
+    height: 40%;
+    width: 100%;
+    line-height: 50px;
+    list-style: none;
+}
+
+
+.sidebar ul li a{
+    background-color: #11101d;
+    color: #fff;
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    text-align: center;
+    white-space: nowrap;
+}
+.sidebar.active ul li a{
+    background-color: #1c1b2c;
+    
+}
+
+.sidebar ul li a:hover{
+    color: #11101d;
+    background: #fff;
+}
+
+.sidebar ul li a i{
+    font-size: 20px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+}
+
+.sidebar .links_name{
+    opacity: 0;
+    pointer-events: none;   
+}
+
+.sidebar.active .links_name{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.home_content{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 70px);
+    left: 70px;
+    padding:1% 2%;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active ~ .home_content{
+    width: calc(100% - 300px);
+    left: 300px;
+}
+
+.home_content h1{
+    
+
+    display: flex;
+    justify-content: left;
+
+    width: 100%;
+    height:6%;
+}
+
+.topic{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    margin-top: 1%;
+}
+.topic h2{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    color: #333;
+}
+
+.topic .createBtn2{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+
+.topic .createbtn,.topic .view{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.topic .createbtn,.topic .view{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+
+.topic .createRoleBtn,.topic .viewRoles{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: end; 
+}
+
+.topic .search{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #79787b;  
+
+}
+
+#searchRole,#searchRoleAssignments{
+    width: 100%;
+    height: 35px;
+    border: none;
+    outline: none;
+    padding-left: 4%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+   
+}
+
+
+
+
+
+
+#addUser,#createGroup,#createRole,#viewRoles{
+    height: 40px;
+    width: 150px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1%;
+    border: none;
+    cursor: pointer; 
+    border-radius: 20px;
+    font-weight: bold; 
+}
+
+#assignRole,#assigngroup{
+    height: 40px;
+    width: 110px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1%;
+    border: none;
+    cursor: pointer; 
+    border-radius: 20px;
+    font-weight: bold; 
+}
+
+.tableusers,.tablegroups{
+    height: 85%;
+    width: 100%;
+    margin-top: 1%;
+    overflow-x: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.tableroles,.tableroleassignments{
+    height: 39%;
+    width: 100%;
+    margin-top: 1%;
+    overflow-x: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#usersTable,#groupsTable,#rolesTable,#roleAssignmentsTable{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#usersTable thead,#groupsTable thead,#rolesTable thead,#roleAssignmentsTable thead{
+    background-color: #11101d;
+    color: #fff;
+    width: 100%;
+    
+}
+
+#usersTable tbody,#groupsTable tbody,#rolesTable tbody,#roleAssignmentsTable tbody{
+    background-color: #ffffff;
+    color: #000000;
+    width: 100%;
+    
+}
+
+#usersTable tbody tr,#groupsTable tbody tr,#rolesTable tbody tr,#roleAssignmentsTable tbody tr{
+    border-bottom: 1px solid #ddd;
+}
+
+/* #usersTable tbody tr:nth-of-type(even){
+    background-color: #f2efff;
+} */
+
+#usersTable tbody tr:last-of-type{
+    border-bottom: 2px solid #11101d;
+}
+
+#groupsTable tbody tr:last-of-type{
+    border-bottom: 2px solid #11101d;
+}
+
+#rolesTable tbody tr:last-of-type{
+    border-bottom: 2px solid #11101d;
+}
+
+#roleAssignmentsTable tbody tr:last-of-type{
+    border-bottom: 2px solid #11101d;
+}
+
+
+.tableusers::-webkit-scrollbar, .tablegroups::-webkit-scrollbar, .tableroles::-webkit-scrollbar, .tableroleassignments::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+/* Style the scrollbar for WebKit-based browsers */
+
+
+.tableusers table#usersTable thead tr th:nth-child(1) {
+    width: 10%;
+}
+.tableusers table#usersTable thead tr th:nth-child(2) {
+    width: 15%;
+}
+.tableusers table#usersTable thead tr th:nth-child(3) {
+    width: 20%;
+}
+.tableusers table#usersTable thead tr th:nth-child(4) {
+    width: 15%;
+}
+.tableusers table#usersTable thead tr th:nth-child(5) {
+    width: 15%;
+}
+.tableusers table#usersTable thead tr th:nth-child(6) {
+    width: 25%;
+}
+
+/** Create User Modal */
+
+.actions {
+    width: 100%;
+
+}
+
+.actions button{
+    width: 35%;
+    font-weight: bold;
+    
+}
+
+
+
+.addUserModal{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+
+}
+
+#addUserForm{
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 60%;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.addUserModal button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.addUserModal label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.addUserModal input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+.addUserModal button[type="submit"],
+.addUserModal #clear {
+    padding: 1%;
+
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.addUserModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.addUserModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.addUserModal button[type="reset"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.addUserModal button[type="reset"]:hover {
+    background-color: #e53935;
+}
+
+/* update user modal */
+.updateUserModal {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+#updateUserForm {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 60%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.updateUserModal button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.updateUserModal label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.updateUserModal input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.updateUserModal button[type="submit"],
+.updateUserModal #cancelEdit {
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+}
+
+.updateUserModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.updateUserModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.updateUserModal button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.updateUserModal button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+
+
+
+
+
+
+
+
+table th {
+
+    position: sticky;
+    top: 0;
+    background-color: #11101d; /* Match your table header background color */
+    color: #fff; /* Text color */
+    z-index: 10; /* Ensure it is above other content */
+}
+
+
+th, td {
+    padding: 1%;
+    text-align: left;
+    height: 69px;
+}
+
+td button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1%;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 100%;
+    border-radius: 20px;
+    
+
+}
+
+
+.createGroupModal {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+#createGroupForm {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 60%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.createGroupModal button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.createGroupModal label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.createGroupModal input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.createGroupModal button[type="submit"],
+.createGroupModal #cancelCreate {
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+}
+
+.createGroupModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.createGroupModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.createGroupModal button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.createGroupModal button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+.addUserToGroupModal {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+#addUsersToGroupForm {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 40%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.addUserToGroupModal button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.addUserToGroupModal label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.addUserToGroupModal select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.addUserToGroupModal button[type="submit"],
+.addUserToGroupModal #cancelAdd {
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+}
+
+.addUserToGroupModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.addUserToGroupModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.addUserToGroupModal button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.addUserToGroupModal button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+.removeUserFromGroup {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+#removeUserFromGroup {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 40%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.removeUserFromGroup button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.removeUserFromGroup label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.removeUserFromGroup select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.removeUserFromGroup button[type="submit"],
+.removeUserFromGroup #cancelRemove {
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+}
+
+.removeUserFromGroup button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.removeUserFromGroup button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.removeUserFromGroup button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.removeUserFromGroup button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+
+
+
+/* role css */
+
+/** Create Role Modal */
+
+.createRoleModal {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+#createRoleForm {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 60%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.createRoleModal button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.createRoleModal label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.createRoleModal input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.createRoleModal button[type="submit"],
+.createRoleModal #cancelCreate {
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+}
+
+.createRoleModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.createRoleModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.createRoleModal button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.createRoleModal button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+/** Assign Role Modal */
+
+.assignRoleModal {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+#assignRoleForm {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.assignRoleModal button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.assignRoleModal label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.assignRoleModal select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.assignRoleModal button[type="submit"],
+.assignRoleModal #cancelAssign {
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+}
+
+.assignRoleModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.assignRoleModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.assignRoleModal button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.assignRoleModal button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+/** View Role Assignments Modal */
+
+.viewRoleAssignmentsModal {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+#viewRoleAssignmentsForm {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 60%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.viewRoleAssignmentsModal button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.viewRoleAssignmentsModal label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.viewRoleAssignmentsModal select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.viewRoleAssignmentsModal button[type="submit"],
+.viewRoleAssignmentsModal #cancelView {
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+}
+
+.viewRoleAssignmentsModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.viewRoleAssignmentsModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.viewRoleAssignmentsModal button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.viewRoleAssignmentsModal button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+
+
+
+/** Assign Users Modal */
+.assignRoleToUserModal {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+#assignRolesToUserForm {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.assignRoleToUserModal button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.assignRoleToUserModal label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.assignRoleToUserModal select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.assignRoleToUserModal button[type="submit"],
+.assignRoleToUserModal #cancelAssign {
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+}
+
+.assignRoleToUserModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.assignRoleToUserModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.assignRoleToUserModal button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.assignRoleToUserModal button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+/** Assign Groups Modal */
+.assignRoleToGroupModal {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+#assignRolesToGroupForm {
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 20px;
+    width: 40%;
+    height: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.assignRoleToGroupModal button[type="button"] {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.assignRoleToGroupModal label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.assignRoleToGroupModal select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.assignRoleToGroupModal button[type="submit"],
+.assignRoleToGroupModal #cancelAssign {
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+}
+
+.assignRoleToGroupModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.assignRoleToGroupModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.assignRoleToGroupModal button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.assignRoleToGroupModal button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+
+.notification {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 50%;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    z-index: 999;
+    transition: opacity 0.5s ease-in-out;
+    transform: translateX(50%);
+}
+
+
+
+
+
+
+
+
+
+
